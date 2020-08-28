@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Heist
 {
@@ -8,6 +9,8 @@ namespace Heist
         static void Main(string[] args)
         {
             List<TeamMember> Team = new List<TeamMember>();
+
+            int bankDifficulty = 100;
 
             bool memberCheck = true;
             Console.WriteLine("Plan your Heist!");
@@ -34,12 +37,27 @@ namespace Heist
             Console.WriteLine();
             Console.WriteLine($"# of Team Members {Team.Count}");
             Console.WriteLine("Team Members:");
+            //displayTeam(Team);
+            int sumSkills = Team.Sum(memberObj => memberObj.skillLevel);
+            Console.WriteLine();
+            if (sumSkills >= bankDifficulty)
+            {
+                Console.WriteLine("Congratulations! Let's go to Mexico!");
+            }
+            else
+            {
+                Console.WriteLine("You failed!  See you all in the prison cafe!");
+            }
+
+        }
+
+        static void displayTeam(List<TeamMember> Team)
+        {
             foreach (TeamMember member in Team)
             {
                 Console.WriteLine($"{member.Name} {member.skillLevel} {member.courage}");
             }
-            Console.WriteLine();
-
         }
+
     }
 }
