@@ -6,5 +6,6 @@ namespace Heist
         public int skillLevel { get; set; }
 
         public double courage { get; set; }
+
     }
 }
