@@ -11,6 +11,9 @@ namespace Heist
             List<TeamMember> Team = new List<TeamMember>();
 
             int bankDifficulty = 100;
+            int Luck = new Random().Next(-10, 11);
+            bankDifficulty = bankDifficulty + Luck;
+            Console.WriteLine($"Bank Difficulty Level: {bankDifficulty}");
 
             bool memberCheck = true;
             Console.WriteLine("Plan your Heist!");
@@ -35,10 +38,13 @@ namespace Heist
                 }
             }
             Console.WriteLine();
-            Console.WriteLine($"# of Team Members {Team.Count}");
-            Console.WriteLine("Team Members:");
+            // Console.WriteLine($"# of Team Members {Team.Count}");
+            // Console.WriteLine("Team Members:");
             //displayTeam(Team);
             int sumSkills = Team.Sum(memberObj => memberObj.skillLevel);
+            Console.WriteLine("**************** Heist Report *****************");
+            Console.WriteLine($"Team Combined Skill Level: {sumSkills}");
+            Console.WriteLine($"Bank Difficulty Level: {bankDifficulty}");
             Console.WriteLine();
             if (sumSkills >= bankDifficulty)
             {
